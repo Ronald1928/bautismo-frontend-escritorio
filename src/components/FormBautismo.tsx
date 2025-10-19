@@ -48,6 +48,21 @@ function FormBautismo() {
     pdfUrl,
   } = useCertificado(initialForm);
 
+  // 🔹 Esta función evita que Enter envíe el formulario y mueve el foco al siguiente campo
+  /* const handleEnterKey = (e: React.KeyboardEvent<HTMLFormElement>) => {
+    if (e.key === "Enter") {
+      e.preventDefault(); // Evita que el formulario se envíe
+      const form = e.currentTarget;
+      const inputs = Array.from(
+        form.querySelectorAll("input, select, textarea")
+      );
+      const index = inputs.indexOf(e.target as HTMLElement);
+      if (index >= 0 && index < inputs.length - 1) {
+        (inputs[index + 1] as HTMLElement).focus(); // pasa al siguiente campo
+      }
+    }
+  }; */
+
   return (
     <div className="flex flex-col justify-center min-h-screen bg-white/50 backdrop-blur-sm p-6">
       <Card title="Formulario de Bautismo">
@@ -56,6 +71,19 @@ function FormBautismo() {
           onSubmit={(e) => {
             e.preventDefault();
             generarPdf();
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault(); // 🔥 evita envío automático
+              const form = e.currentTarget;
+              const inputs = Array.from(
+                form.querySelectorAll("input, select, textarea")
+              );
+              const index = inputs.indexOf(e.target as HTMLElement);
+              if (index >= 0 && index < inputs.length - 1) {
+                (inputs[index + 1] as HTMLElement).focus(); // 🔁 pasa al siguiente campo
+              }
+            }
           }}
         >
           <div>
@@ -377,7 +405,7 @@ function FormBautismo() {
               Vista previa del certificado
             </Button>
 
-            <Button type="submit" variant="primary" onClick={generarPdf}>
+            <Button type="button" variant="primary" onClick={generarPdf}>
               Guardar y Generar PDF
             </Button>
 

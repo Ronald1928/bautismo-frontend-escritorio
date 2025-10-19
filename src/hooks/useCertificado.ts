@@ -52,12 +52,6 @@ export function useCertificado(initialForm: FormData) {
               },
             }
           );
-          /* try {
-          const disponible = await window.bautismoAPI.checkIdDisponible(
-            newForm.libroBautizo,
-            newForm.folioBautizo,
-            newForm.numeroArchivo
-          ); */
 
           if (!response.data.available) {
             setMensajeValidarError(
@@ -81,10 +75,6 @@ export function useCertificado(initialForm: FormData) {
         form,
         { responseType: "blob" }
       );
-      /* try {
-      const buffer = await window.bautismoAPI.handleVistaPrevia(form);
-      const uint8Array = new Uint8Array(buffer); */
-      //const blob = new Blob([uint8Array], { type: "application/pdf" });
       const blob = new Blob([response.data], { type: "application/pdf" });
       const url = URL.createObjectURL(blob);
 
@@ -98,7 +88,6 @@ export function useCertificado(initialForm: FormData) {
   const guardarBautismoBD = async () => {
     try {
       await axios.post(`${API_URL}/api/certificados_bautismo`, form);
-      //await window.bautismoAPI.guardarBautismoBD(form);
       setPdfUrl(null);
       // reset form
       setForm(initialForm);
@@ -119,11 +108,6 @@ export function useCertificado(initialForm: FormData) {
         form,
         { responseType: "blob" }
       );
-      /* try {
-      const buffer = await window.bautismoAPI.generarPdf(form);
-      const uint8Array = new Uint8Array(buffer);
-      const blob = new Blob([uint8Array], { type: "application/pdf" });
-      const url = window.URL.createObjectURL(blob); */
 
       const url = window.URL.createObjectURL(new Blob([response.data]));
       const link = document.createElement("a");
