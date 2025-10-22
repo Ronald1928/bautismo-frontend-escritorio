@@ -48,21 +48,6 @@ function FormBautismo() {
     pdfUrl,
   } = useCertificado(initialForm);
 
-  // 🔹 Esta función evita que Enter envíe el formulario y mueve el foco al siguiente campo
-  /* const handleEnterKey = (e: React.KeyboardEvent<HTMLFormElement>) => {
-    if (e.key === "Enter") {
-      e.preventDefault(); // Evita que el formulario se envíe
-      const form = e.currentTarget;
-      const inputs = Array.from(
-        form.querySelectorAll("input, select, textarea")
-      );
-      const index = inputs.indexOf(e.target as HTMLElement);
-      if (index >= 0 && index < inputs.length - 1) {
-        (inputs[index + 1] as HTMLElement).focus(); // pasa al siguiente campo
-      }
-    }
-  }; */
-
   return (
     <div className="flex flex-col justify-center min-h-screen bg-white/50 backdrop-blur-sm p-6">
       <Card title="Formulario de Bautismo">
@@ -74,14 +59,14 @@ function FormBautismo() {
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              e.preventDefault(); // 🔥 evita envío automático
+              e.preventDefault(); // evita envío automático
               const form = e.currentTarget;
               const inputs = Array.from(
                 form.querySelectorAll("input, select, textarea")
               );
               const index = inputs.indexOf(e.target as HTMLElement);
               if (index >= 0 && index < inputs.length - 1) {
-                (inputs[index + 1] as HTMLElement).focus(); // 🔁 pasa al siguiente campo
+                (inputs[index + 1] as HTMLElement).focus(); // pasa al siguiente campo
               }
             }
           }}

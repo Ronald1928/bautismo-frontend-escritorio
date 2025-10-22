@@ -1,7 +1,6 @@
 import { useState, useRef } from "react";
 import axios from "axios";
 import type { FormData } from "../types/form";
-//import { API_URL } from "../config/api";
 import API_URL from "../config";
 
 export function useCertificado(initialForm: FormData) {

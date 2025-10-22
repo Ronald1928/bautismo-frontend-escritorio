@@ -4,7 +4,7 @@ export default function Version() {
       <h1 className="text-3xl font-bold mb-4">Versión de BautiSacrum</h1>
       <p className="mb-4">
         La versión actual de <strong>BautiSacrum</strong> es{" "}
-        <strong>1.0.0</strong>. Esta versión incluye las funcionalidades básicas
+        <strong>1.0.1</strong>. Esta versión incluye las funcionalidades básicas
         para la gestión y búsqueda de certificados de bautismo.
       </p>
     </div>
