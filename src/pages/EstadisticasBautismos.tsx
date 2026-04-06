@@ -36,27 +36,7 @@ interface TotalPorGrupo {
 
 export default function EstadisticasBautismos() {
   const [data, setData] = useState<Estadistica[]>([]);
-  const [anio, setAnio] = useState<number>(2025); // Año por defecto
-  /*  const [promedioEdadNinos, setPromedioEdadNinos] = useState<number>(0);
-  const [promedioEdadHombres, setPromedioEdadHombres] = useState<number>(0);
-  const [promedioEdadMujeres, setPromedioEdadMujeres] = useState<number>(0);
-  const totales = data.reduce(
-    (acc, item) => {
-      acc.ninos += item.ninos;
-      acc.hombres += item.hombres;
-      acc.mujeres += item.mujeres;
-      acc.total += item.total;
-      return acc;
-    },
-    { ninos: 0, hombres: 0, mujeres: 0, total: 0 },
-  ); */
-  /* const promedioEdadTotal =
-    totales.total > 0
-      ? (promedioEdadNinos * totales.ninos +
-          promedioEdadHombres * totales.hombres +
-          promedioEdadMujeres * totales.mujeres) /
-        totales.total
-      : 0; */
+  const [anio, setAnio] = useState<number>(new Date().getFullYear());
   const [resumenGeneral, setResumenGeneral] = useState<ResumenGeneral>({
     ninos: 0,
     hombres: 0,
@@ -87,10 +67,6 @@ export default function EstadisticasBautismos() {
             grupoMayor7: 0,
           },
         );
-
-        /*  setPromedioEdadNinos(res.data.promedioEdadNinos);
-        setPromedioEdadHombres(res.data.promedioEdadHombres);
-        setPromedioEdadMujeres(res.data.promedioEdadMujeres); */
       })
       .catch((err) => {
         console.error("Error al obtener estadísticas:", err);
@@ -166,41 +142,6 @@ export default function EstadisticasBautismos() {
             </div>
           </div>
         )}
-
-        {/*  {hayDatos && (
-          <div className="w-full max-w-4xl p-6 rounded shadow mt-6 text-center">
-            <h3 className="text-lg font-semibold mb-2">Edad promedio</h3>
-
-            <div className="grid grid-cols-3 gap-4 mb-4">
-              <div className="bg-white p-4 rounded shadow text-center">
-                <p className="text-sm text-gray-500">Niños</p>
-                <p className="text-2xl font-bold text-green-600">
-                  {promedioEdadNinos} años
-                </p>
-              </div>
-
-              <div className="bg-white p-4 rounded shadow text-center">
-                <p className="text-sm text-gray-500">Hombres</p>
-                <p className="text-2xl font-bold text-blue-600">
-                  {promedioEdadHombres} años
-                </p>
-              </div>
-
-              <div className="bg-white p-4 rounded shadow text-center">
-                <p className="text-sm text-gray-500">Mujeres</p>
-                <p className="text-2xl font-bold text-pink-600">
-                  {promedioEdadMujeres} años
-                </p>
-              </div>
-            </div>
-            <div className="bg-white p-4 rounded shadow text-center">
-              <p className="text-sm text-gray-500">General</p>
-              <p className="text-2xl font-bold text-gray-600">
-                {Math.round(promedioEdadTotal)} años
-              </p>
-            </div>
-          </div>
-        )} */}
       </div>
 
       {/* Gráfico */}
