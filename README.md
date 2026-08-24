@@ -29,7 +29,7 @@ La aplicación completa está dividida en tres partes principales: **frontend, b
 1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/tu-usuario/iglesia-bautismo-frontend.git
+   git clone https://github.com/Ronald1928/iglesia-bautismo-frontend.git
    ```
 
 2. Entra a la carpeta del proyecto:
