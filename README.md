@@ -1,69 +1,142 @@
-# React + TypeScript + Vite
+# BautiSacrum Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este es el **frontend** de **BautiSacrum**, una aplicación de escritorio para la gestión de certificados de bautismo.
 
-Currently, two official plugins are available:
+Está desarrollado con **React + TypeScript + Vite** y utiliza **Tailwind CSS** para la interfaz. El frontend se comunica con un backend desarrollado con **Node.js + Express**, encargado de gestionar los datos y la base de datos.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+La aplicación completa está dividida en tres partes principales: **frontend, backend y Electron**. Electron funciona como la capa de escritorio encargada de ejecutar y empaquetar la aplicación.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Tecnologías utilizadas
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- **React** – Biblioteca principal para la interfaz.
+- **TypeScript** – Tipado estático y definición de tipos.
+- **Vite** – Herramienta de desarrollo y construcción.
+- **Tailwind CSS** – Diseño y estilos de la interfaz.
+- **React Router** – Navegación entre las diferentes vistas.
+- **Axios** – Comunicación con la API del backend.
+- **Recharts** – Creación de gráficos y estadísticas.
+- **Framer Motion** – Animaciones de la interfaz.
+- **jsPDF / PDF.js** – Generación y visualización de documentos PDF.
+- **Lucide React** – Iconos de la interfaz.
+- **Electron** – Capa de escritorio utilizada para ejecutar y empaquetar la aplicación.
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Instalación y configuración
+
+1. Clona este repositorio:
+
+   ```bash
+   git clone https://github.com/tu-usuario/iglesia-bautismo-frontend.git
+   ```
+
+2. Entra a la carpeta del proyecto:
+
+   ```bash
+   cd iglesia-bautismo-frontend
+   ```
+
+3. Instala las dependencias:
+
+   ```bash
+   npm install
+   ```
+
+---
+
+## Ejecutar en desarrollo
+
+Para iniciar el frontend en modo desarrollo:
+
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Construcción del proyecto
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+Para generar la versión de producción:
+
+```bash
+npm run build
 ```
+
+Este comando verifica los tipos de TypeScript y genera la versión optimizada del proyecto mediante Vite.
+
+Para ejecutar una vista previa de la versión de producción:
+
+```bash
+npm run preview
+```
+
+---
+
+## Funcionalidades principales
+
+- Registro y gestión de certificados de bautismo.
+- Búsqueda de certificados.
+- Vista previa de certificados.
+- Generación y visualización de documentos PDF.
+- Estadísticas de bautismos mediante gráficos.
+- Navegación entre las diferentes secciones de la aplicación.
+- Información de la aplicación y del desarrollador.
+- Componentes reutilizables para la interfaz.
+
+---
+
+## Estructura del frontend
+
+```text
+src/
+├── assets/           # Recursos estáticos
+├── components/       # Componentes reutilizables
+│   └── ui/           # Componentes básicos de interfaz
+├── config/           # Configuración de la API
+├── hooks/            # Hooks personalizados
+├── layout/           # Estructura general de la aplicación
+├── pages/            # Páginas y vistas
+│   └── acerca/       # Información de la aplicación
+├── types/            # Tipos e interfaces TypeScript
+├── App.tsx
+└── main.tsx
+```
+
+---
+
+## Arquitectura de BautiSacrum
+
+El proyecto se encuentra dividido en diferentes partes:
+
+```text
+BautiSacrum/
+│
+├── iglesia-bautismo-frontend/  # Interfaz de usuario
+├── bautismo-backend/           # API y gestión de datos
+├── electron/                   # Aplicación de escritorio
+└── build/                      # Archivos generados para distribución
+```
+
+El frontend consume la API proporcionada por el backend mediante **Axios**.
+
+El backend utiliza **Node.js + Express + SQLite**, mientras que **Electron** permite ejecutar y empaquetar la aplicación como software de escritorio.
+
+---
+
+## Backend
+
+[Ver repositorio del backend](https://github.com/Ronald1928/bautismo-backend-escritorio)
+
+---
+
+## Aplicación de escritorio
+
+[Ver repositorio principal de BautiSacrum](https://github.com/Ronald1928/bautisacrum)
+
+---
+
+## Licencia
+
+Este proyecto es de uso personal y educativo. 🚫 No está destinado para uso comercial sin autorización.
